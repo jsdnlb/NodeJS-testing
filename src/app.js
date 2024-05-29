@@ -2,6 +2,7 @@ import express from 'express';
 import { v4 } from 'uuid';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import userRoutes from './router/user.js';
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,9 @@ mongoose
   .catch((err) => {
     console.error('Database connection error', err);
   });
+
+// middlware
+app.use('/api', userRoutes);
 
 //routes
 app.get('/', (req, res) => {
