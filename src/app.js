@@ -1,9 +1,33 @@
 import express from 'express';
 import { v4 } from 'uuid';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 
 app.use(express.json());
+
+// mongodb connection
+const url = process.env.MONGODB_URI;
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
+mongoose
+  .connect(url, options)
+  .then(() => {
+    console.log('Correctly connected to db');
+  })
+  .catch((err) => {
+    console.error('Database connection error', err);
+  });
+
+//routes
+app.get('/', (req, res) => {
+  res.send('Welcome to home again!');
+});
 
 app.get('/ping', (req, res) => {
   res.send('pong');
