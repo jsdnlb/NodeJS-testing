@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './router/user.js';
+import bookRoutes from './router/book.js';
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,7 @@ mongoose
 
 // middlware
 app.use('/api', userRoutes);
+app.use('/api', bookRoutes);
 
 //routes
 app.get('/', (req, res) => {

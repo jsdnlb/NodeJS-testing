@@ -1,0 +1,15 @@
+### Testing creating a new book
+POST http://localhost:3000/api/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "1984",
+    "author": "George Orwell",
+    "pages": 328,
+    "genres": ["Fiction", "Dystopian", "Political"],
+    "description": "A dystopian novel set in a totalitarian society ruled by Big Brother."
+}
+
+### Testing get all books
+GET http://localhost:3000/api/books HTTP/1.1
+Content-Type: application/json
